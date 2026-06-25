@@ -42,6 +42,18 @@ const About = () => {
           </a>
         )}
 
+        {social?.xiaohongshu && (
+          <a
+            href={social.xiaohongshu}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <span type='button' className='btn btn--outline'>
+              小红书主页
+            </span>
+          </a>
+        )}
+
         {social && (
           <>
             {social.github && (

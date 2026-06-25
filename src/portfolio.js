@@ -1,52 +1,49 @@
 const header = {
   homepage: '',
-  title: 'Portfolio.',
+  title: 'Yun Craft.',
 }
 
 const about = {
-  name: '你的名字',
-  role: '设计师 / 创作者',
+  name: 'yun craft',
+  role: '陶瓷 / 手作创作者',
   picture: 'avatar.svg',
-  description:
-    '这里放一段简短的自我介绍。你可以写自己的创作方向、擅长领域，或者作品集的整体说明。',
+  description: '喜欢动手，劳动快乐。',
   resume: '',
   social: {
-    github: '',
-    linkedin: '',
+    xiaohongshu: 'https://xhslink.com/m/8YrHa7eZIMK',
   },
 }
 
 const projects = [
   {
-    name: '品牌视觉设计',
-    description: '为某品牌完成的 Logo 与视觉识别系统，强调简洁与现代感。',
-    stack: ['品牌', '平面设计'],
-    image: 'work-01.svg',
-    livePreview: '',
-    sourceCode: '',
+    name: '你好🐘',
+    description:
+      '好像听到了昆虫的鸣叫，一片波光粼粼的湖水，踩在湿润的草地上，就这样每天被自然治愈着。',
+    stack: ['陶瓷', '陶艺', '大象'],
+    images: [
+      'works/nihao-elephant/01.jpg',
+      'works/nihao-elephant/02.jpg',
+      'works/nihao-elephant/03.jpg',
+    ],
   },
   {
-    name: '移动端界面设计',
-    description: '一款生活类 App 的核心页面设计，注重信息层级与交互体验。',
-    stack: ['UI', '移动端'],
-    image: 'work-02.svg',
-    livePreview: '',
-    sourceCode: '',
-  },
-  {
-    name: '摄影作品集',
-    description: '城市街拍系列，记录光影变化与日常瞬间。',
-    stack: ['摄影', '后期'],
-    image: 'work-03.svg',
-    livePreview: '',
-    sourceCode: '',
+    name: '陶瓷｜手掌里的鸟',
+    description: '将小鸟托于掌心的陶瓷小品，记录手作过程中的造型与釉色变化。',
+    stack: ['陶瓷', '手作'],
+    images: [
+      'works/palm-bird/01.jpg',
+      'works/palm-bird/02.jpg',
+      'works/palm-bird/03.jpg',
+      'works/palm-bird/04.jpg',
+      'works/palm-bird/05.jpg',
+    ],
   },
 ]
 
 const skills = []
 
 const contact = {
-  email: 'your.email@example.com',
+  email: '',
 }
 
 export { header, about, projects, skills, contact }
