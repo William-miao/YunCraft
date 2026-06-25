@@ -1,8 +1,10 @@
 .projects__grid {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  grid-gap: 2em;
-  justify-items: center;
+}
+
+.section__title.ant-typography {
+  text-align: center;
+  margin-bottom: 1em !important;
+  text-transform: uppercase;
 }

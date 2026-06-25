@@ -7,8 +7,13 @@
   color: var(--clr-primary);
 }
 
+.about__heading {
+  margin-bottom: 0 !important;
+}
+
 .about__role {
-  margin-top: 1.2em;
+  margin-top: 0.5em !important;
+  margin-bottom: 0 !important;
 }
 
 .about__desc {
@@ -44,11 +49,8 @@
 }
 
 .about__picture {
-  width: 180px;
-  height: 180px;
-  border-radius: 70%;   /* round profile */
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .about__intro {

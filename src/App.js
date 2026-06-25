@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { ConfigProvider, theme as antTheme } from 'antd'
 import { ThemeContext } from './contexts/theme'
 import Header from './components/Header/Header'
 import About from './components/About/About'
@@ -11,21 +12,34 @@ import './App.css'
 
 const App = () => {
   const [{ themeName }] = useContext(ThemeContext)
+  const isDark = themeName === 'dark'
 
   return (
-    <div id='top' className={`${themeName} app`}>
-      <Header />
+    <ConfigProvider
+      theme={{
+        algorithm: isDark
+          ? antTheme.darkAlgorithm
+          : antTheme.defaultAlgorithm,
+        token: {
+          colorPrimary: isDark ? '#90a0d9' : '#2978b5',
+          borderRadius: 8,
+        },
+      }}
+    >
+      <div id='top' className={`${themeName} app`}>
+        <Header />
 
-      <main>
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
+        <main>
+          <About />
+          <Projects />
+          <Skills />
+          <Contact />
+        </main>
 
-      <ScrollToTop />
-      <Footer />
-    </div>
+        <ScrollToTop />
+        <Footer />
+      </div>
+    </ConfigProvider>
   )
 }
 

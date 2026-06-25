@@ -1,8 +1,11 @@
 import { useContext, useState } from 'react'
-import Brightness2Icon from '@material-ui/icons/Brightness2'
-import WbSunnyRoundedIcon from '@material-ui/icons/WbSunnyRounded'
-import MenuIcon from '@material-ui/icons/Menu'
-import CloseIcon from '@material-ui/icons/Close'
+import { Button } from 'antd'
+import {
+  CloseOutlined,
+  MenuOutlined,
+  MoonOutlined,
+  SunOutlined,
+} from '@ant-design/icons'
 import { ThemeContext } from '../../contexts/theme'
 import { projects, skills, contact } from '../../portfolio'
 import './Navbar.css'
@@ -56,23 +59,21 @@ const Navbar = () => {
         ) : null}
       </ul>
 
-      <button
-        type='button'
+      <Button
+        type='text'
         onClick={toggleTheme}
-        className='btn btn--icon nav__theme'
+        className='nav__theme'
         aria-label='toggle theme'
-      >
-        {themeName === 'dark' ? <WbSunnyRoundedIcon /> : <Brightness2Icon />}
-      </button>
+        icon={themeName === 'dark' ? <SunOutlined /> : <MoonOutlined />}
+      />
 
-      <button
-        type='button'
+      <Button
+        type='text'
         onClick={toggleNavList}
-        className='btn btn--icon nav__hamburger'
+        className='nav__hamburger'
         aria-label='toggle navigation'
-      >
-        {showNavList ? <CloseIcon /> : <MenuIcon />}
-      </button>
+        icon={showNavList ? <CloseOutlined /> : <MenuOutlined />}
+      />
     </nav>
   )
 }

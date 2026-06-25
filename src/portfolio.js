@@ -6,7 +6,7 @@ const header = {
 const about = {
   name: 'yun craft',
   role: '陶瓷 / 手作创作者',
-  picture: 'avatar.svg',
+  picture: 'avatar.webp',
   description: '喜欢动手，劳动快乐。',
   resume: '',
   social: {

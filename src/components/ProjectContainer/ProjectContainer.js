@@ -1,7 +1,8 @@
-import uniqid from 'uniqid'
-import GitHubIcon from '@material-ui/icons/GitHub'
-import LaunchIcon from '@material-ui/icons/Launch'
+import { Card, Carousel, Space, Tag, Typography } from 'antd'
+import { GithubOutlined, LinkOutlined } from '@ant-design/icons'
 import './ProjectContainer.css'
+
+const { Paragraph, Title } = Typography
 
 const getImageSrc = (image) =>
   image.startsWith('http')
@@ -16,73 +17,73 @@ const getProjectImages = (project) => {
 
 const ProjectContainer = ({ project }) => {
   const images = getProjectImages(project)
+  const hasMultipleImages = images.length > 1
+
+  const cover =
+    images.length > 0 ? (
+      <Carousel
+        arrows={hasMultipleImages}
+        dots={false}
+        infinite={hasMultipleImages}
+        draggable={hasMultipleImages}
+        className='project-carousel'
+      >
+        {images.map((image, index) => (
+          <div key={image} className='project-carousel__slide'>
+            <img
+              src={getImageSrc(image)}
+              alt={`${project.name} ${index + 1}`}
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+          </div>
+        ))}
+      </Carousel>
+    ) : null
 
   return (
-    <article
-      className={`project${images.length > 1 ? ' project--gallery' : ''}`}
-    >
-      {images.length > 0 && (
-        <div
-          className={`project__images${
-            images.length > 1 ? ' project__images--grid' : ''
-          }`}
-        >
-          {images.map((image, index) => (
-            <div key={image} className='project__image-wrap'>
-              <img
-                src={getImageSrc(image)}
-                alt={`${project.name} ${index + 1}`}
-                className='project__image'
-                loading='lazy'
-              />
-            </div>
+    <Card cover={cover} className='project-card' bordered={false}>
+      <Title level={4} className='project-card__title'>
+        {project.name}
+      </Title>
+
+      <Paragraph type='secondary' className='project-card__description'>
+        {project.description}
+      </Paragraph>
+
+      {project.stack?.length > 0 && (
+        <Space wrap size={[8, 8]}>
+          {project.stack.map((item) => (
+            <Tag key={item}>{item}</Tag>
           ))}
-        </div>
+        </Space>
       )}
 
-      <div className='project__body'>
-        <h3 className='project__name'>{project.name}</h3>
-        <p className='project__description'>{project.description}</p>
+      {(project.sourceCode || project.livePreview) && (
+        <Space className='project-card__links'>
+          {project.sourceCode && (
+            <a
+              href={project.sourceCode}
+              aria-label='source code'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <GithubOutlined />
+            </a>
+          )}
 
-        {project.stack?.length > 0 && (
-          <ul className='project__stack'>
-            {project.stack.map((item) => (
-              <li key={uniqid()} className='project__stack-item'>
-                {item}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {(project.sourceCode || project.livePreview) && (
-          <div className='project__links'>
-            {project.sourceCode && (
-              <a
-                href={project.sourceCode}
-                aria-label='source code'
-                className='link link--icon'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <GitHubIcon />
-              </a>
-            )}
-
-            {project.livePreview && (
-              <a
-                href={project.livePreview}
-                aria-label='live preview'
-                className='link link--icon'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <LaunchIcon />
-              </a>
-            )}
-          </div>
-        )}
-      </div>
-    </article>
+          {project.livePreview && (
+            <a
+              href={project.livePreview}
+              aria-label='live preview'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <LinkOutlined />
+            </a>
+          )}
+        </Space>
+      )}
+    </Card>
   )
 }
 

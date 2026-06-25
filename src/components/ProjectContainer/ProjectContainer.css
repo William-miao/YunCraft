@@ -1,89 +1,72 @@
-.project {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  text-align: left;
+.project-card {
+  height: 100%;
   box-shadow: var(--shadow);
   transition: transform 0.2s linear;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-card .ant-card-body {
+  padding: 1.25rem;
+}
+
+.project-card .ant-card-cover {
   overflow: hidden;
-  border-radius: 12px;
 }
 
-.project:hover {
-  transform: translateY(-7px);
+.project-card__title {
+  margin: 0 0 0.5rem !important;
 }
 
-.project__image-wrap {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--clr-bg-alt);
+.project-card__description {
+  margin-bottom: 0.85rem !important;
 }
 
-.project__images--grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px;
-  background: var(--clr-bg-alt);
+.project-card__links {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
 }
 
-.project--gallery {
-  max-width: 720px;
-  width: 100%;
-}
-
-.project__images--grid .project__image-wrap:nth-child(1) {
-  grid-column: 1 / -1;
-}
-
-.project__images--grid .project__image-wrap:nth-child(1) {
+.project-carousel {
   aspect-ratio: 1 / 1;
+  background: var(--clr-bg-alt);
 }
 
-.project__image {
+.project-carousel .slick-slider,
+.project-carousel .slick-list,
+.project-carousel .slick-track,
+.project-carousel .slick-slide,
+.project-carousel .slick-slide > div {
+  height: 100%;
+}
+
+.project-carousel__slide {
+  height: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--clr-bg-alt);
+}
+
+.project-carousel__slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.project__body {
-  padding: 1.5em;
+.project-carousel .slick-prev,
+.project-carousel .slick-next {
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  color: var(--clr-fg);
+  opacity: 0.75;
 }
 
-.project__name {
-  margin: 0;
-  font-size: 1.15rem;
+.project-carousel .slick-prev:hover,
+.project-carousel .slick-next:hover {
+  opacity: 1;
 }
 
-.project__description {
-  margin-top: 0.75em;
-  margin-bottom: 0;
-  color: var(--clr-fg-alt);
-  line-height: 1.6;
-}
-
-.project__stack {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1em 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.project__stack-item {
-  margin: 0.35em 0.5em 0 0;
-  padding: 0.25em 0.65em;
-  font-weight: 500;
-  font-size: 0.75rem;
-  color: var(--clr-fg-alt);
-  background: var(--clr-bg-alt);
-  border-radius: 999px;
-}
-
-.project__links {
-  margin-top: 1em;
-}
-
-.project .link--icon {
-  margin-right: 0.5em;
-}

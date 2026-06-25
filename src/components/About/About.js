@@ -1,83 +1,81 @@
-import GitHubIcon from '@material-ui/icons/GitHub'
-import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import { Avatar, Button, Space, Typography } from 'antd'
+import { GithubOutlined, LinkedinOutlined } from '@ant-design/icons'
 import { about } from '../../portfolio'
 import './About.css'
 
+const { Paragraph, Title } = Typography
+
+const getPictureSrc = (picture) => {
+  if (!picture) return null
+  if (picture.startsWith('http')) return picture
+  return `${process.env.PUBLIC_URL}/images/${picture}`
+}
+
 const About = () => {
   const { name, role, description, resume, social, picture } = about
+  const pictureSrc = getPictureSrc(picture)
 
   return (
     <div className='about center'>
       <div className='about__header'>
-        {picture && (
-          <img
-            src={
-              picture.startsWith('http')
-                ? picture
-                : `${process.env.PUBLIC_URL}/images/${picture}`
-            }
-            alt={name}
-            className='about__picture'
-          />
+        {pictureSrc && (
+          <Avatar src={pictureSrc} alt={name} size={120} className='about__picture' />
         )}
 
-    <div className='about__intro'>
-      {name && (
-        <h1>
-          你好，我是 <span className='about__name'>{name}</span>
-        </h1>
-      )}
+        <div className='about__intro'>
+          {name && (
+            <Title level={1} className='about__heading'>
+              你好，我是 <span className='about__name'>{name}</span>
+            </Title>
+          )}
 
-      {role && <h2 className='about__role'>{role}</h2>}
-      <p className='about__desc'>{description && description}</p>
-      </div>
+          {role && (
+            <Title level={3} type='secondary' className='about__role'>
+              {role}
+            </Title>
+          )}
+
+          {description && (
+            <Paragraph className='about__desc'>{description}</Paragraph>
+          )}
+        </div>
       </div>
 
-      <div className='about__contact center'>
+      <Space wrap className='about__contact center' size='middle'>
         {resume && (
-          <a href={resume}>
-            <span type='button' className='btn btn--outline'>
-              简历
-            </span>
-          </a>
+          <Button href={resume} target='_blank'>
+            简历
+          </Button>
         )}
 
         {social?.xiaohongshu && (
-          <a
-            href={social.xiaohongshu}
+          <Button href={social.xiaohongshu} target='_blank' rel='noreferrer'>
+            小红书主页
+          </Button>
+        )}
+
+        {social?.github && (
+          <Button
+            type='text'
+            href={social.github}
             target='_blank'
             rel='noreferrer'
-          >
-            <span type='button' className='btn btn--outline'>
-              小红书主页
-            </span>
-          </a>
+            aria-label='github'
+            icon={<GithubOutlined />}
+          />
         )}
 
-        {social && (
-          <>
-            {social.github && (
-              <a
-                href={social.github}
-                aria-label='github'
-                className='link link--icon'
-              >
-                <GitHubIcon />
-              </a>
-            )}
-
-            {social.linkedin && (
-              <a
-                href={social.linkedin}
-                aria-label='linkedin'
-                className='link link--icon'
-              >
-                <LinkedInIcon />
-              </a>
-            )}
-          </>
+        {social?.linkedin && (
+          <Button
+            type='text'
+            href={social.linkedin}
+            target='_blank'
+            rel='noreferrer'
+            aria-label='linkedin'
+            icon={<LinkedinOutlined />}
+          />
         )}
-      </div>
+      </Space>
     </div>
   )
 }
